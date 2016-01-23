@@ -3,11 +3,13 @@ package org.usfirst.frc.team340.robot.subsystems;
 import org.usfirst.frc.team340.robot.RobotMap;
 import org.usfirst.frc.team340.robot.commands.DriveWithJoysticks;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *Dummy subsystem for simple drive code, including motors and encoders.
+ *drive code including motors and encoders.
  *@version 1.0
  */
 public class Drive extends Subsystem {
@@ -16,16 +18,22 @@ public class Drive extends Subsystem {
     // here. Call these from Commands.
 	
 	// Drive motors
-	private TalonSRX leftDrive;
-	private TalonSRX rightDrive;
+	private Talon leftDrive;
+	private Talon rightDrive;
 	
 	// Drive speed variables
-	public double leftMotorSpeed;
-	public double rightMotorSpeed;
+	private double leftMotorSpeed;
+	private double rightMotorSpeed;
+	
+	private Encoder leftDriveEncoder;
+	private Encoder rightDriveEncoder;
 	
 	public Drive() {
-		leftDrive = new TalonSRX(RobotMap.DriveLeftMotor);
-		rightDrive = new TalonSRX(RobotMap.DriveRightMotor);
+		leftDrive = new Talon(RobotMap.DriveLeftMotor);
+		rightDrive = new Talon(RobotMap.DriveRightMotor);
+		
+		leftDriveEncoder = new Encoder(RobotMap.LeftDriveEncoderPortA, RobotMap.LeftDriveEnocderPortB);
+		rightDriveEncoder = new Encoder(RobotMap.RightDriveEncoderPortA, RobotMap.RightDriveEncoderPortB);
 	}
 	
     public void initDefaultCommand() {
@@ -59,6 +67,28 @@ public class Drive extends Subsystem {
     
     public void stopBothDrive() {
     	leftDrive.set(0);
+    	rightDrive.set(0);
+    }
+    
+    public double getLeftEncoder() {
+    	return leftDriveEncoder.get();
+    }
+    
+    public double getRightEncoder() {
+    	return rightDriveEncoder.get();
+    }
+    
+    public void resetLeftEncoder() {
+    	leftDriveEncoder.reset();
+    }
+    
+    public void resetRightEncoder() {
+    	rightDriveEncoder.reset();
+    }
+    
+    public void resetBothEncoders() {
+    	resetLeftEncoder();
+    	resetRightEncoder();
     }
     
     public void arcadeDrive(double moveValue, double rotateValue){

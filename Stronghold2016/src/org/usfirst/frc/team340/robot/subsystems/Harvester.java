@@ -1,5 +1,7 @@
 package org.usfirst.frc.team340.robot.subsystems;
 
+import org.usfirst.frc.team340.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,30 +20,47 @@ public class Harvester extends Subsystem {
     // here. Call these from Commands.
 	
 	// Roller furthest from the robot
-	public CANTalon outside = new CANTalon(0);
+	private CANTalon outside = new CANTalon(RobotMap.HarvesterOuterMotor);
 	// Roller closest to the robot
-	public CANTalon inside = new CANTalon(1);
+	private CANTalon inside = new CANTalon(RobotMap.HarvesterInnerMotor);
 	
 	// not sure what type of motor this is gonna be
-	public CANTalon aiming = new CANTalon(2);
+	private CANTalon aiming = new CANTalon(RobotMap.HarvesterAimingMotor);
 	
-	public Encoder aimPosition = new Encoder(0, 1);
+	private Encoder aimPosition = new Encoder(RobotMap.HarvesterEncoderPortA, RobotMap.HarvesterEncoderPortB);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    /**
+     * Drives the robot farthest from the robot
+     * @param speed
+     */
     public void driveOutside(double speed) {
     	outside.set(speed);
     }
+    
+    /**
+     * Drives the robot closest to the robot
+     * @param speed
+     */
     public void driveInside(double speed) {
     	inside.set(speed);
     }
     
+    /**
+     * Drives the motor that actuates the harvester/shooter
+     * @param speed
+     */
     public void driveAiming(double speed) {
     	aiming.set(speed);
     }
+    /**
+     * Gets the encoder on the harvester
+     * @return
+     */
     public int getAim() {
     	return aimPosition.get();
     }

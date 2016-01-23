@@ -2,6 +2,7 @@
 package org.usfirst.frc.team340.robot;
 
 import org.usfirst.frc.team340.robot.subsystems.Drive;
+import org.usfirst.frc.team340.robot.subsystems.Harvester;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -20,6 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final Drive drive = new Drive();
+	public static final Harvester harvester = new Harvester();
 	public static OI oi;
 
     Command autonomousCommand;

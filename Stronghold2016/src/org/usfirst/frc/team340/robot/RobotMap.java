@@ -10,36 +10,40 @@ import org.usfirst.frc.team340.robot.subsystems.Harvester;
  */
 public class RobotMap {
 	
-	//why
-	//change here
+	//
 	// Motor Ports
 	//
 	
 	public static int DriveLeftMotor = 0;
 	public static int DriveRightMotor = 1;
 	
-	public static int ClawArmMotor = 2;
-	public static int ClawTopMotor = 3;
+	public static int HarvesterOuterMotor = 2;
+	public static int HarvesterInnerMotor = 3;
+	public static int HarvesterAimingMotor = 4;
+	
+	public static int ClimberMovementMotor = 5;
+	public static int ClimberWinchMotor = 6;
 	
 	//
 	// Solenoid Ports
 	//
 	
-	public static int ClawPiston = 0;
+	public static int ClimberPinPuller = 0;
 	
 	//
 	// Digital I/O Ports
 	//
 	
-	public static int ClawBottomSwitch = 4;
-	public static int ClawTopSwitch = 5;
+	public static int HarvesterEncoderPortA = 0;
+	public static int HarvesterEncoderPortB = 1;
+	
+	public static int LeftDriveEncoderPortA = 6;
+	public static int LeftDriveEnocderPortB = 7;
+	public static int RightDriveEncoderPortA = 8;
+	public static int RightDriveEncoderPortB = 9;
 	
 	//
 	// Analog I/O Ports
 	//
 	
-	public static int ClawArmAngleSensor = 0;
-	
-	//wundr doesn't quite know where to put this
-	public Harvester harvester = new Harvester();
 }
