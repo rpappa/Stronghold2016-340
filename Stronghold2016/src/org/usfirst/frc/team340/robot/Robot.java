@@ -1,9 +1,6 @@
 
 package org.usfirst.frc.team340.robot;
 
-import org.usfirst.frc.team340.robot.commands.AutoDefault;
-import org.usfirst.frc.team340.robot.commands.DriveForward;
-import org.usfirst.frc.team340.robot.subsystems.ClawArm;
 import org.usfirst.frc.team340.robot.subsystems.Drive;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -23,7 +20,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 
 	public static final Drive drive = new Drive();
-	public static final ClawArm clawArm = new ClawArm();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -37,11 +33,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new AutoDefault());
+//        chooser.addDefault("Default Auto", new AutoDefault());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
-        
-        belowLowBar = new DriveForward(5, -1);
     }
 	
 	/**
